@@ -12,6 +12,6 @@ export class ApiService {
   getProjects () {
     //TODO fetch data
     const {appUrl} = environment;
-    return this.http.get(`${appUrl}api/themes`)
+    return this.http.get(`${appUrl}api/projects`)
   }
 }
