@@ -2,7 +2,7 @@ const { projectModel } = require('../models');
 
 function getProjects(req, res, next) {
     projectModel.find({}).lean()
-        // .populate('userId')
+        .populate('userId')
         .then(projects => {
             res.status(200).json(projects)
         })
