@@ -11,6 +11,7 @@ import { MainBannerComponent } from './main-banner/main-banner.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { ExploreWorkComponent } from './explore-work/explore-work.component';
 import { WhatsTrendingComponent } from './whats-trending/whats-trending.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { WhatsTrendingComponent } from './whats-trending/whats-trending.componen
     MainBannerComponent,
     SearchFormComponent,
     ExploreWorkComponent,
-    WhatsTrendingComponent
+    WhatsTrendingComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
