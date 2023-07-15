@@ -4,7 +4,7 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'app-whats-trending',
   templateUrl: './whats-trending.component.html',
-  styleUrls: ['./whats-trending.component.css'],
+  styleUrls: ['./whats-trending.component.scss'],
 })
 export class WhatsTrendingComponent implements OnInit {
   constructor(private apiService: ApiService) {}
