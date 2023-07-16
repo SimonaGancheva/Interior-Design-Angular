@@ -3,20 +3,53 @@
     "architect": "Simona Gancheva",
     "client": "SoftUni",
     "terms": "6 months",
-    "project-type": "Interior Design",
+    "type": "Interior Design",
     "style": "Minimalistic",
     "date": "June 2023",
     "description": "Nice apartment with mountain view. The bedrooms are spacious and well-lid. The cosiness is achieved via wood and light coloured walls.",
-    "location": "Sofia"
+    "location": "Sandanski"
 },
 {
     "title": "alpine house",
     "architect": "Simona Gancheva",
     "client": "John Doe",
     "terms": "12 months",
-    "project-type": "Architecture",
+    "type": "Architecture",
     "style": "Rural",
     "date": "July 2022",
     "description": "Wonderful house situated in the mountains. Wonderful house situated in the mountains. Wonderful house situated in the mountains. Wonderful house situated in the mountains. Wonderful house situated in the mountains.",
     "location": "Sofia"
+},
+{
+    "title": "brewary",
+    "architect": "Vladimir Gancheva",
+    "client": "John Doe2",
+    "terms": "3 months",
+    "type": "Interior Design",
+    "style": "Traditional",
+    "date": "July 2021",
+    "description": "Traditional German Brewary",
+    "location": "Plovdiv"
+},
+{
+    "title": "Central Park Coffee Shop",
+    "architect": "Simona Gancheva",
+    "client": "Victor Popov",
+    "terms": "5 months",
+    "type": "Interior Design",
+    "style": "Industrial",
+    "date": "October 2022",
+    "description": "A contemporary coffee shop situated near a wonderful park",
+    "location": "Dupnitsa"
+},
+{
+    "title": "Shared Office Space",
+    "architect": "Simona Gancheva",
+    "client": "John Doe",
+    "terms": "12 months",
+    "type": "Renovation",
+    "style": "Minimalistic",
+    "date": "July 2019",
+    "description": "A minimalistic design for a shared office space in the city center of Varna.",
+    "location": "Varna"
 }]

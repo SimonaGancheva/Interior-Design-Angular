@@ -1,10 +1,23 @@
 const { projectModel } = require('../models');
 
-function getProjects(req, res, next) {
-    projectModel.find({}).lean()
+// function getProjects(req, res, next) {
+//     projectModel.find({}).lean()
+//         .populate('userId')
+//         .then(projects => {
+//             res.status(200).json(projects)
+//         })
+//         .catch(next);
+// }
+
+function getLatestsProjects(req, res, next) {
+    const limit = Number(req.query.limit) || 0;
+
+    projectModel.find()
+        .sort({ created_at: -1 })
+        .limit(limit)
         .populate('userId')
-        .then(projects => {
-            res.status(200).json(projects)
+        .then(porjects => {
+            res.status(200).json(porjects)
         })
         .catch(next);
 }
@@ -91,7 +104,7 @@ function deleteProject(req, res, next) {
 // }
 
 module.exports = {
-    getProjects,
+    getLatestsProjects,
     createProject,
     getProject,
     editProject,

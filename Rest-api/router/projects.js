@@ -5,7 +5,8 @@ const { projectsController } = require("../controllers");
 
 // middleware that is specific to this router
 
-router.get("/", projectsController.getProjects);
+// router.get("/", projectsController.getProjects);
+router.get('/', projectsController.getLatestsProjects)
 router.post('/', auth(), projectsController.createProject);
 
 router.get('/:projectId', projectsController.getProject);

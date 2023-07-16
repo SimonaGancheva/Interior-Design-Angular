@@ -10,8 +10,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects () {
+  getLatestProjects (limit?: number) {
     const {appUrl} = environment;
-    return this.http.get<Project[]>(`${appUrl}api/projects`)
+    const limitFilter = limit ? `?limit=${limit}` : '';
+    return this.http.get<Project[]>(`${appUrl}api/projects${limitFilter}`)
   }
 }
