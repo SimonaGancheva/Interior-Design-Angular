@@ -12,6 +12,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { ExploreWorkComponent } from './explore-work/explore-work.component';
 import { WhatsTrendingComponent } from './whats-trending/whats-trending.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     SearchFormComponent,
     ExploreWorkComponent,
     WhatsTrendingComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
