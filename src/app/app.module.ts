@@ -11,8 +11,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { ExploreWorkComponent } from './explore-work/explore-work.component';
 import { WhatsTrendingComponent } from './whats-trending/whats-trending.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
 import { InteriorDesignInfoComponent } from './interior-design-info/interior-design-info.component';
 import { WhatTheySayComponent } from './what-they-say/what-they-say.component';
@@ -21,6 +20,9 @@ import { ContactPageMapComponent } from './contact-page-map/contact-page-map.com
 import { ContactPageFormComponent } from './contact-page-form/contact-page-form.component';
 import { CallToActionComponent } from './call-to-action/call-to-action.component';
 import { PageBannerComponent } from './page-banner/page-banner.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { ExplorePageComponent } from './explore-page/explore-page.component';
+import { ExploreItemComponent } from './explore-item/explore-item.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,7 @@ import { PageBannerComponent } from './page-banner/page-banner.component';
     ExploreWorkComponent,
     WhatsTrendingComponent,
     ContactUsComponent,
-    HomeComponent,
-    AboutComponent,
+    HomePageComponent,
     ServicesComponent,
     InteriorDesignInfoComponent,
     WhatTheySayComponent,
@@ -39,7 +40,10 @@ import { PageBannerComponent } from './page-banner/page-banner.component';
     ContactPageMapComponent,
     ContactPageFormComponent,
     CallToActionComponent,
-    PageBannerComponent
+    PageBannerComponent,
+    AboutPageComponent,
+    ExplorePageComponent,
+    ExploreItemComponent
   ],
   imports: [
     BrowserModule,
