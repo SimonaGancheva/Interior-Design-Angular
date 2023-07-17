@@ -36,8 +36,8 @@ function getProject(req, res, next) {
         .catch(next);
 }
 
-function newProject(userId, title, architect, client, terms, type, style, date, description, location) {
-    return projectModel.create({ userId, title, architect, client, terms, type, style, date, description, location })
+function newProject(userId, title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3) {
+    return projectModel.create({ userId, title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 })
     // TODO save if necessary
     // .save();
         // .then(post => {
@@ -50,19 +50,19 @@ function newProject(userId, title, architect, client, terms, type, style, date, 
 
 function createProject(req, res, next) {
     const { _id: userId } = req.user;
-    const { title, architect, client, terms, type, style, date, description, location } = req.body;
+    const { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 } = req.body;
 
-    newProject(userId, title, architect, client, terms, type, style, date, description, location)
+    newProject(userId, title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3)
         // .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
         // .catch(next);
 }
 
 function editProject(req, res, next) {
     const { _id: userId } = req.user;
-    const { title, architect, client, terms, type, style, date, description, location } = req.body;
+    const { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 } = req.body;
 
     // if the userId is not the same as this one of the post, the post will not be updated
-    postModel.findOneAndUpdate({ _id: postId, userId }, { title, architect, client, terms, type, style, date, description, location }, { new: true })
+    postModel.findOneAndUpdate({ _id: postId, userId }, { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 }, { new: true })
         .then(updatedPost => {
             if (updatedPost) {
                 res.status(200).json(updatedPost);

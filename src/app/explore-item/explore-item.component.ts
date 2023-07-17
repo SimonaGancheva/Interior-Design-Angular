@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { ActivatedRoute } from '@angular/router';
+import { Project } from '../types/project';
 
 @Component({
   selector: 'app-explore-item',
   templateUrl: './explore-item.component.html',
-  styleUrls: ['./explore-item.component.scss']
+  styleUrls: ['./explore-item.component.scss'],
 })
-export class ExploreItemComponent {
+export class ExploreItemComponent implements OnInit {
+  project: Project | undefined;
 
+  constructor(
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.fetchProject();
+  }
+
+  fetchProject(): void {
+    const id = this.activatedRoute.snapshot.params['projectId'];
+
+    this.apiService.getProject(id).subscribe((project) => {
+      this.project = project;
+      console.log({project});
+    });
+  }
 }

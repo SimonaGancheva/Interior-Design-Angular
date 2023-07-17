@@ -15,4 +15,9 @@ export class ApiService {
     const limitFilter = limit ? `?limit=${limit}` : '';
     return this.http.get<Project[]>(`${appUrl}api/projects${limitFilter}`)
   }
+
+  getProject(id: string) {
+    const {appUrl} = environment;
+    return this.http.get<Project>(`${appUrl}api/projects/${id}`)
+  }
 }
