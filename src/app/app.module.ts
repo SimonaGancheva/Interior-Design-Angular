@@ -24,6 +24,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { ExploreItemComponent } from './explore-item/explore-item.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

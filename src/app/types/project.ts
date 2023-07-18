@@ -14,5 +14,6 @@ export interface Project {
    "userId": User,
    "mainImageUrl": string,
    "imageUrl2": string,
-   "imageUrl3": string
+   "imageUrl3": string,
+   "_id": string,
 }
