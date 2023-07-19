@@ -25,7 +25,7 @@ export class ExploreItemComponent implements OnInit {
 
     this.apiService.getProject(id).subscribe((project) => {
       this.project = project;
-      console.log({project});
+      // console.log({project});
     });
   }
 }

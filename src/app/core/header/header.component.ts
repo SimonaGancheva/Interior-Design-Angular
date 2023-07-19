@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {}
 
-  get isLoggedIn(): boolean {
+  public get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
 
-  get firstName(): string {
+  public get firstName(): string {
     return this.userService.user?.username || '';
   }
 

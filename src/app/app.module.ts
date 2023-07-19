@@ -23,6 +23,9 @@ import { PageBannerComponent } from './page-banner/page-banner.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ExplorePageComponent } from './explore-page/explore-page.component';
 import { ExploreItemComponent } from './explore-item/explore-item.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { ExploreItemComponent } from './explore-item/explore-item.component';
     PageBannerComponent,
     AboutPageComponent,
     ExplorePageComponent,
-    ExploreItemComponent
+    ExploreItemComponent,
+    ProfilePageComponent,
+    CreateProjectPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,

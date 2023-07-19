@@ -8,7 +8,7 @@ export class UserService {
   user: User | undefined;
   USER_KEY = '[user]';
 
-  get isLogged(): boolean {
+  public get isLogged(): boolean {
     return !!this.user;
   }
 

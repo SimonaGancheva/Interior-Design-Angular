@@ -8,6 +8,9 @@ import { ExploreItemComponent } from './explore-item/explore-item.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthActivate } from './core/guards/auth.activate';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -19,7 +22,19 @@ const routes: Routes = [
     component: ExplorePageComponent,
   },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent  }
+  { path: 'login', component: LoginComponent },
+
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [AuthActivate],
+  },
+  {
+    path: 'create',
+    component: CreateProjectPageComponent,
+    canActivate: [AuthActivate],
+  },
+  {path: '**', component: NotFoundPageComponent}
 ];
 
 @NgModule({
