@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-banner.component.scss']
 })
 export class MainBannerComponent {
+  currentId: string = '64b394c49263f65f19c097bc'; // TODO: make dynamic
 
 }

@@ -26,7 +26,9 @@ import { ExploreItemComponent } from './explore-item/explore-item.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-
+import { UserModule } from './user/user.module';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,14 +52,17 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     ExploreItemComponent,
     ProfilePageComponent,
     CreateProjectPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     HttpClientModule,
     NgbModule,
+    UserModule,
+    FormsModule,
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
