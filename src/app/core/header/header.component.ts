@@ -11,7 +11,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent implements OnInit {
   projectList: Project[] = [];
-  currentId: string = '64b394c49263f65f19c097bc';
+  currentId: string = '64b394c49263f65f19c097bc'; // TODO: make dynamic
 
   constructor(
     private activatedRoute: ActivatedRoute,

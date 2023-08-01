@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { AboutPageComponent } from './about-page/about-page.component';
-import { ExplorePageComponent } from './explore-page/explore-page.component';
-import { ExploreItemComponent } from './explore-item/explore-item.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ContactUsComponent } from './contact-feature/contact-us/contact-us.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { ExplorePageComponent } from './pages/explore-page/explore-page.component';
+import { ExploreItemComponent } from './explore-feature/explore-item/explore-item.component';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthActivate } from './core/guards/auth.activate';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
-import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { CreateProjectPageComponent } from './pages/create-project-page/create-project-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },

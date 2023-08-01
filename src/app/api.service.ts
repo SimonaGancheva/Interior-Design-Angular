@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment.development';
 import { Project } from './types/project';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
 

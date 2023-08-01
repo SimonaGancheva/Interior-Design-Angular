@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../types/project';
-import { ApiService } from '../api.service';
-
+import { Project } from 'src/app/types/project';
+import { ApiService } from 'src/app/api.service';
 @Component({
   selector: 'app-explore-work',
   templateUrl: './explore-work.component.html',

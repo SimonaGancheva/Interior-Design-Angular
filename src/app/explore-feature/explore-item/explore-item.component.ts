@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from 'src/app/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from '../types/project';
+import { Project } from 'src/app/types/project';
 
 @Component({
   selector: 'app-explore-item',
