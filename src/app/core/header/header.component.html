@@ -1,79 +1,11 @@
-<header id="#top">
-  <nav class="main-navigation navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/home"
-        ><img src="assets/images/white-logo.png" alt=""
-      /></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav" *ngIf="currentId">
-          <li class="nav-item">
-            <!-- <a class="nav-link active" href="index.html">Homepage</a> -->
-            <a class="nav-link" routerLinkActive="active" routerLink="/home"
-              >Homepage</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/about"
-              >About Us</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLinkActive="active"
-              routerLink="/explore/{{ currentId }}"
-              >Explore Work</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/trending"
-              >Trending</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/contact"
-              >Contact Us</a
-            >
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" routerLink="/login"
-              >Login</a
-            >
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" routerLink="/register"
-              >Register</a
-            >
-          </li>
-
-          <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" routerLink="/create"
-              >Create Project</a
-            >
-          </li>
-          <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" routerLink="/profile"
-              >Profile</a
-            >
-          </li>
-          <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link" routerLinkActive="active" (click)="logout()" style="cursor: pointer;"
-              >Logout</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
+<nav>
+    <span class="logo">Your Logo</span>
+    <ul>
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#create-project">Create Project</a></li>
+      <li><a href="#logout">Logout</a></li>
+    </ul>
   </nav>
-</header>

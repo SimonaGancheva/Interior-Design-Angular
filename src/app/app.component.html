@@ -1,28 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Page Application</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  
 <app-header></app-header>
+<app-project-card></app-project-card>
+  <router-outlet></router-outlet>
 
-<!-- <app-home></app-home> -->
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>
-
-<!-- Scripts -->
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<script src="assets/js/isotope.min.js"></script>
-<script src="assets/js/owl-carousel.js"></script>
-
-<script src="assets/js/tabs.js"></script>
-<script src="assets/js/popup.js"></script>
-<script src="assets/js/custom.js"></script>
-<script>
-  setTimeout(function () {
-    $(".loader").fadeToggle();
-  }, 1500);
-
-  $("a[href='#top']").click(function () {
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-    return false;
-  });
-</script>
+  <app-footer></app-footer>
+</body>
+</html>

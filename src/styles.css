@@ -1,0 +1,125 @@
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: coral;
+    color: #fff;
+    display: flex;
+    justify-content: space-between; /* Set links to the right */
+    align-items: center;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  nav a:hover {
+    color: #ddd;
+  }
+  
+  nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #content {
+    padding-bottom: 20px;
+  }
+  
+  .page {
+    display: none;
+  }
+  
+  .page.active {
+    display: block;
+  }
+  
+  
+  
+  
+   /* .project-card {
+    max-width: calc(33.33% - 20px); 
+    width: 750px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  } */
+  
+  /* .project-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+   
+  height: 0;
+  padding-bottom: 100%;
+  object-fit: cover;
+
+  } */
+  
+  /* .project-card h2 {
+    font-size: 18px;
+    margin: 0;
+  } */
+  
+  /* .project-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+   */
+  /* .project-card button {
+    background-color: grey;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  } */
+  
+  /* .project-card button:hover {
+    background-color: #555;
+  } 
+   */
+  
+  footer {
+    background-color: coral;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+    padding-left: 20px; /* Center align h1 heading */
+    padding-right: 20px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    margin-top: 0;
+    color: #fff;
+    background-image: url('https://as1.ftcdn.net/v2/jpg/02/60/20/04/1000_F_260200488_PNiNFT7fcW2BJHjV8u51QNS1TtQRXQSn.jpg'); /* Replace with the path to your background image */
+    background-size: cover;
+  }
