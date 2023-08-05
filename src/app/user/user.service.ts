@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class UserService {
   // public user$ = this.user$$.asObservable();
 
   user: User | undefined;
-  USER_KEY = '[user]';
+  USER_KEY = 'userId';
 
   public get isLogged(): boolean {
     return !!this.user;
@@ -19,7 +20,7 @@ export class UserService {
 
   // subscription: Subscription;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookie: CookieService) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
       this.user = JSON.parse(lsUser);
@@ -40,18 +41,22 @@ export class UserService {
   ) {
     const { appUrl } = environment;
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
 
-    return this.http.post<User>(`${appUrl}api/register`, {
-      email,
-      username,
-      password,
-      rePassword,
-    });
-    // .subscribe(
-    //   (response) => console.log(response),
-    //   (error) => console.log(error.message)
-    // );
+    return this.http
+      .post<User>(`${appUrl}api/register`, {
+        email,
+        username,
+        password,
+        rePassword,
+      })
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.login(email, password);
+        },
+        (error) => console.log(error.message)
+      );
     //   .pipe(tap((user: User | undefined) => this.user$$.next(user)));
   }
 
@@ -60,15 +65,21 @@ export class UserService {
     this.user = {
       email,
       password,
+      username: '',
+      _id: '',
     };
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
 
     return this.http
       .post<User>(`${appUrl}api/login`, { email, password })
       .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error.message)
+        (response) => {
+          localStorage.setItem(this.USER_KEY, JSON.stringify(response._id));
+        },
+        (error) => {
+          console.log(error.message);
+        }
       );
     //   .pipe(tap((user: User | undefined) => this.user$$.next(user)));
   }

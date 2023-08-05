@@ -12,9 +12,11 @@ import { CommonModule } from '@angular/common';
 import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
+import {CookieService} from 'ngx-cookie-service';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, ProjectsPageComponent],
+  declarations: [AppComponent, HomePageComponent, ProjectsPageComponent, CreatePageComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -25,7 +27,7 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     FormsModule, UserModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

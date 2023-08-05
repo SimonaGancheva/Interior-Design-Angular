@@ -4,13 +4,15 @@ import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   {path: 'home', component: HomePageComponent},
   { path: 'projects', component: ProjectsPageComponent },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'create', component: CreatePageComponent}
   
 ];
 
