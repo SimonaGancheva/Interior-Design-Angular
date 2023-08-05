@@ -27,6 +27,7 @@ body {
   nav a {
     text-decoration: none;
     color: #fff;
+    cursor: pointer;
   }
   
   nav a:hover {
@@ -123,3 +124,74 @@ body {
     background-image: url('https://as1.ftcdn.net/v2/jpg/02/60/20/04/1000_F_260200488_PNiNFT7fcW2BJHjV8u51QNS1TtQRXQSn.jpg'); /* Replace with the path to your background image */
     background-size: cover;
   }
+
+  h2 {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px; 
+    
+    
+    margin-top: 0;
+    color: #000;   
+    
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    border: 1 px solid coral;
+    width: 800px;
+    padding: 20px;
+    align-items: center;
+    margin: auto;
+  }
+
+  .form-group {
+    display: flex;
+    margin-bottom: 15px;
+    width: 33%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    
+  }
+  
+  label {
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-right: 0;
+  }
+  
+  .submit {
+    background-color: coral;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .submit:hover {
+    background-color: darkgrey; /* Darker shade of coral on hover */
+  }
+
+  .action {
+    cursor: pointer;
+    color: coral;
+  }
+
+ 
+
+
+  

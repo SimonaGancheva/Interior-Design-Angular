@@ -8,16 +8,22 @@ import { ProjectsFeaturesModule } from './projects-features/projects-features.mo
 import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ProjectsPageComponent } from './projects-page/projects-page.component';
+import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent],
+  declarations: [AppComponent, HomePageComponent, ProjectsPageComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     CoreModule,
     ProjectsFeaturesModule,
     HttpClientModule,
+    FormsModule, UserModule
   ],
   providers: [],
   bootstrap: [AppComponent],

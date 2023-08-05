@@ -1,11 +1,24 @@
 <nav>
-    <span class="logo">Your Logo</span>
-    <ul>
-      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="#register">Register</a></li>
-      <li><a href="#create-project">Create Project</a></li>
-      <li><a href="#logout">Logout</a></li>
-    </ul>
-  </nav>
+  <span class="logo">I - D - A</span>
+  <ul>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+    </li>
+
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/create" routerLinkActive="active">Create Project</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>

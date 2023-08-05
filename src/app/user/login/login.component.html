@@ -1,0 +1,22 @@
+<div class="form-container">
+  <h1>Login</h1>
+  <form #from="ngForm" (ngSubmit)="login(from)">
+    <div class="form-group">
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required ngModel/>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" required ngModel/>
+    </div>
+
+    <button class="submit" type="submit">Login</button>
+    <div class="form-group">
+      <div>Don't have an account?</div>
+      <a class="action" routerLink="/register" routerLinkActive="active"
+        >Register now!</a
+      >
+    </div>
+  </form>
+</div>
