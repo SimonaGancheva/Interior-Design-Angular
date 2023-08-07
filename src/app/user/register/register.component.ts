@@ -9,18 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  USER_KEY = '[user]';
   constructor(private userService: UserService, private router: Router) {}
 
   register(form: NgForm): void {
+    
     if (form.invalid) {
       return;
     }
 
     console.log(form.value);
 
-    const {email, username, password, rePassword} = form.value;
+    const { email, username, password, rePassword } = form.value;
 
-    this.userService.register(email, username, password, rePassword);
-    this.router.navigate(['/'])
+    this.userService
+      .register(email, username, password, rePassword)
+      .subscribe((res) => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email))
+        this.router.navigate(['/']);
+      });
   }
 }

@@ -11,7 +11,6 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
   projectList: Project[] = [];
-  currentId: string = '64b394c49263f65f19c097bc'; // TODO: make dynamic
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -20,7 +19,6 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    this.userService.logout();
-    this.router.navigate(['/']);
+    this.userService.logout().subscribe(() => this.router.navigate(['/']));
   }
 }

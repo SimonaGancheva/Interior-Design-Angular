@@ -5,14 +5,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import { AuthActivate } from './guards/auth.activate';
+import { NoAuthActivate } from './guards/noAuth.activate';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   {path: 'home', component: HomePageComponent},
   { path: 'projects', component: ProjectsPageComponent },
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent}, // TODO route guard for authenticated users
   {path: 'register', component: RegisterComponent},
-  {path: 'create', component: CreatePageComponent}
+  {path: 'create', component: CreatePageComponent, canActivate: [AuthActivate]}
   
 ];
 

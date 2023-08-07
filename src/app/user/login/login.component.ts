@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private router: Router) {}
+  USER_KEY = '[user]';
+
+  constructor(private userService: UserService, private router: Router, private cookieService: CookieService) {}
 
   login(form: NgForm): void {
+
     if (form.invalid) {
       return;
     }
@@ -20,7 +24,9 @@ export class LoginComponent {
 
     const { email, password } = form.value;
 
-    this.userService.login(email, password);
-    this.router.navigate(['/']);
+    this.userService.login(email, password).subscribe((res) => {
+      localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email))
+      this.router.navigate(['/']);
+    });
   }
 }

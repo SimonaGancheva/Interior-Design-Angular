@@ -1,24 +1,37 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Project } from './app/types/project';
-
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  appUrl = environment.appUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getProjects (limit?: number) {
-    const {appUrl} = environment;
+  getProjects(limit?: number) {
     const limitFilter = limit ? `?limit=${limit}` : '';
-    return this.http.get<Project[]>(`${appUrl}api/projects${limitFilter}`)
+    return this.http.get<Project[]>(`${this.appUrl}api/projects${limitFilter}`);
   }
 
   getProject(id: string) {
-    const {appUrl} = environment;
-    return this.http.get<Project>(`${appUrl}api/projects/${id}`)
+    return this.http.get<Project>(`${this.appUrl}api/projects/${id}`);
+  }
+
+  postProject(project: Project) {
+    debugger
+    return this.http
+      .post<Project>(`${this.appUrl}api/projects`, project).pipe(tap((event) => {
+        if(event instanceof HttpResponse) {
+          console.log(event);
+        }
+      }))
+      // .subscribe(
+      //   (response) => console.log(response),
+      //   (error) => console.log(error.message)
+      // );
   }
 }

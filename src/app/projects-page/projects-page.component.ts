@@ -17,7 +17,6 @@ export class ProjectsPageComponent {
       next: (projects) => {
         this.projectList = projects;
         
-        console.log(projects);
       },
       error: (err) => {
         console.error(`Error: ${err}`);

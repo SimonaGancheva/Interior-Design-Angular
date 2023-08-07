@@ -49,6 +49,7 @@ function newProject(userId, title, architect, client, terms, type, style, date, 
 }
 
 function createProject(req, res, next) {
+    
     const { _id: userId } = req.user;
     const { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 } = req.body;
 
@@ -79,7 +80,7 @@ function deleteProject(req, res, next) {
     const { _id: userId } = req.user;
 
     Promise.all([
-        projectModel.findOneAndDelete({ _id: postId, userId }),
+        projectModel.findOneAndDelete({ _id: projectId, userId }),
         // userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
         
     ])

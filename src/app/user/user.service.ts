@@ -1,36 +1,50 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { CookieService } from 'ngx-cookie-service';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  // private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  // public user$ = this.user$$.asObservable();
+  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  public user$ = this.user$$.asObservable();
 
   user: User | undefined;
-  USER_KEY = 'userId';
+  appUrl = environment.appUrl;
+  USER_KEY = '[user]';
 
-  public get isLogged(): boolean {
-    return !!this.user;
-  }
-
-  // subscription: Subscription;
+  subscription: Subscription;
 
   constructor(private http: HttpClient, private cookie: CookieService) {
-    try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || '';
-      this.user = JSON.parse(lsUser);
-    } catch (error) {
-      this.user = undefined;
+    // try {
+    //   const lsUser = localStorage.getItem(this.USER_KEY) || '';
+    //   this.user = JSON.parse(lsUser);
+    // } catch (error) {
+    //   this.user = undefined;
+    // }
+
+    this.subscription = this.user$.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  public get isLogged(): boolean {
+    const lsUser = localStorage.getItem(this.USER_KEY);
+    if (lsUser == undefined) {
+      return false;
+    } else {
+      return true;
     }
 
-    // this.subscription = this.user$.subscribe((user) => {
-    //   this.user = user;
-    // });
+    // if (this.user == undefined) {
+    //   return false;
+    // } else {
+    //   return true;
+    // }
+    // return !!this.user;
   }
 
   register(
@@ -39,56 +53,28 @@ export class UserService {
     password: string,
     rePassword: string
   ) {
-    const { appUrl } = environment;
-
-    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-
     return this.http
-      .post<User>(`${appUrl}api/register`, {
+      .post<User>(`${this.appUrl}api/register`, {
         email,
         username,
         password,
         rePassword,
       })
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.login(email, password);
-        },
-        (error) => console.log(error.message)
-      );
-    //   .pipe(tap((user: User | undefined) => this.user$$.next(user)));
+      .pipe(tap((user: User | undefined) => this.user$$.next(user)));
   }
 
   login(email: string, password: string) {
-    const { appUrl } = environment;
-    this.user = {
-      email,
-      password,
-      username: '',
-      _id: '',
-    };
-
-    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-
     return this.http
-      .post<User>(`${appUrl}api/login`, { email, password })
-      .subscribe(
-        (response) => {
-          localStorage.setItem(this.USER_KEY, JSON.stringify(response._id));
-        },
-        (error) => {
-          console.log(error.message);
-        }
-      );
-    //   .pipe(tap((user: User | undefined) => this.user$$.next(user)));
+      .post<User>(`${this.appUrl}api/login`, { email, password })
+      .pipe(tap((user: User | undefined) => this.user$$.next(user)));
   }
 
   logout() {
-    this.user = undefined;
+    // this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
 
-    return this.http.post<User>('/api/logout', {});
-    // .pipe(tap(() => this.user$$.next(undefined)));
+    return this.http
+      .post<User>(`${this.appUrl}api/logout`, {})
+      .pipe(tap(() => this.user$$.next(undefined)));
   }
 }

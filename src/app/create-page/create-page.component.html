@@ -1,42 +1,42 @@
 <div class="form-container">
     <h1>Create Project</h1>
-    <form>
+    <form #from="ngForm" (ngSubmit)="createProject(from)">
       <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
+      <input type="text" id="title" name="title" required ngModel>
 
       <label for="architect">Architect:</label>
-      <input type="text" id="architect" name="architect" required>
+      <input type="text" id="architect" name="architect" required ngModel>
 
       <label for="client">Client:</label>
-      <input type="text" id="client" name="client" required>
+      <input type="text" id="client" name="client" required ngModel>
 
       <label for="terms">Terms:</label>
-      <input type="text" id="terms" name="terms" required>
+      <input type="text" id="terms" name="terms" required ngModel>
 
       <label for="type">Type:</label>
-      <input type="text" id="type" name="type" required>
+      <input type="text" id="type" name="type" required ngModel>
 
       <label for="style">Style:</label>
-      <input type="text" id="style" name="style" required>
+      <input type="text" id="style" name="style" required ngModel>
 
       <label for="date">Date:</label>
-      <input type="date" id="date" name="date" required>
+      <input type="date" id="date" name="date" required ngModel>
 
       <label for="description">Description:</label>
-      <textarea id="description" name="description" required></textarea>
+      <textarea id="description" name="description" rows="5" cols="35" required ngModel></textarea>
 
       <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required>
+      <input type="text" id="location" name="location" required ngModel>
 
       <label for="mainImage">Main Image:</label>
-      <input type="file" id="mainImage" name="mainImage" accept="image/*" required>
+      <input type="text" id="mainImage" name="mainImageUrl" required ngModel>
 
       <label for="secondImage">Second Image:</label>
-      <input type="file" id="secondImage" name="secondImage" accept="image/*" required>
+      <input type="text" id="secondImage" name="imageUrl2" required ngModel>
 
       <label for="thirdImage">Third Image:</label>
-      <input type="file" id="thirdImage" name="thirdImage" accept="image/*" required>
+      <input type="text" id="thirdImage" name="imageUrl3"  required ngModel>
 
-      <button type="submit">Create Project</button>
+      <button type="submit" class="submit">Create Project</button>
     </form>
   </div>
