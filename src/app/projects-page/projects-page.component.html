@@ -6,7 +6,7 @@
           <img src="{{ project.mainImageUrl }}" alt="Project 1" />
           <h2>{{ project.title }}</h2>
           <p>Architect: {{ project.architect }}</p>
-          <button>Details</button>
+          <button *ngIf="isLogged" [routerLink]="project._id">Details</button>
         </div>
       </div>
     </div>

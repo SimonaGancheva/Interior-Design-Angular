@@ -20,9 +20,7 @@ export class CreatePageComponent {
 
     const data = form.value;
 
-    this.apiService
-      .postProject(data)
-      .subscribe(() => this.router.navigate(['/']));
-    // TODO navigate to project's details page
+    this.apiService.postProject(data).subscribe();
+    this.router.navigate(['/']) // TODO navigate to project's details page
   }
 }

@@ -22,16 +22,13 @@ export class ApiService {
   }
 
   postProject(project: Project) {
-    debugger
     return this.http
-      .post<Project>(`${this.appUrl}api/projects`, project).pipe(tap((event) => {
+      .post<Project>(`${this.appUrl}api/projects`, project)
+      .pipe(tap((event) => {
         if(event instanceof HttpResponse) {
           console.log(event);
         }
       }))
-      // .subscribe(
-      //   (response) => console.log(response),
-      //   (error) => console.log(error.message)
-      // );
+      
   }
 }

@@ -7,19 +7,24 @@ import { RegisterComponent } from './user/register/register.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { AuthActivate } from './guards/auth.activate';
 import { NoAuthActivate } from './guards/noAuth.activate';
+import { ProjectDetailsComponent } from './projects-features/project-details/project-details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  {path: 'home', component: HomePageComponent},
+  { path: 'home', component: HomePageComponent },
   { path: 'projects', component: ProjectsPageComponent },
-  {path: 'login', component: LoginComponent}, // TODO route guard for authenticated users
-  {path: 'register', component: RegisterComponent},
-  {path: 'create', component: CreatePageComponent, canActivate: [AuthActivate]}
-  
+  { path: 'projects/:projectId', component: ProjectDetailsComponent },
+  { path: 'login', component: LoginComponent }, // TODO route guard for authenticated users
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'create',
+    component: CreatePageComponent,
+    canActivate: [AuthActivate],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

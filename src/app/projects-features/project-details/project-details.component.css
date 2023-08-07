@@ -1,0 +1,52 @@
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Set the gap between cards (optional, adjust as needed) */
+    gap: 20px;
+  }
+
+
+.project-details-card {
+    max-width: 80%; /* 3 cards per row, minus the gap */
+    width: 1200px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-details-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* Ensure the image is displayed as a square */
+  height: auto;
+  object-fit: cover;
+
+  }
+  
+  .project-details-card h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .project-details-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .project-details-card button {
+    background-color: grey;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .project-details-card button:hover {
+    background-color: #555;
+  }
