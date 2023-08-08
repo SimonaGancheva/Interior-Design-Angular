@@ -1,23 +1,22 @@
 <div id="content">
-    <div id="projects">
-      <h1>Arch.stagram</h1>
+  <div id="projects">
+    <h1>Arch.stagram</h1>
 
-      <h2>Welcome to Arch.stragram!</h2>
-      <p>a space for architecture and interior design</p>
-
-      <hr>
-
-      <div class="latest-projects"><h3>Explore projects</h3></div>
-      <div class="project-grid">
-        <div class="project-card" *ngFor="let project of projectList">
-          <img src="{{ project.mainImageUrl }}" alt="Project 1" />
-          <h2>{{ project.title }}</h2>
-          <p>Architect: {{ project.architect }}</p>
-          <button *ngIf="isLogged" [routerLink]="project._id">Details</button>
-        </div>
+    <h2>Welcome to Arch.stragram!</h2>
+    <p>a space for architecture and interior design</p>
+    <hr />
+    <div class="latest-projects"><h3>Explore projects</h3></div>
+    <div class="project-grid">
+      <div class="project-card" *ngFor="let project of projectList">
+        <img src="{{ project.mainImageUrl }}" alt="Project 1" />
+        <h2>{{ project.title }}</h2>
+        <p>Architect: {{ project.architect }}</p>
+        <button *ngIf="isLogged" [routerLink]="project._id">Details</button>
       </div>
-
-      <h4><a routerLink="/projects">See more here!</a></h4>
     </div>
+    <br>
+
+    <div><a routerLink="/projects">See more here!</a></div>
+    <br>
   </div>
-  
+</div>

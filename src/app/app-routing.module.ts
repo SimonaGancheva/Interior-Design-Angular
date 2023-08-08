@@ -8,6 +8,7 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { AuthActivate } from './guards/auth.activate';
 import { NoAuthActivate } from './guards/noAuth.activate';
 import { ProjectDetailsComponent } from './projects-features/project-details/project-details.component';
+import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -21,6 +22,7 @@ const routes: Routes = [
     component: CreatePageComponent,
     canActivate: [AuthActivate],
   },
+  {path: 'my-projects', component: MyProjectsPageComponent, canActivate: [AuthActivate]}
 ];
 
 @NgModule({

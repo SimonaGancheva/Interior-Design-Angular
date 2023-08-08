@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { UserService } from './user/user.service';
+import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UserService } from './user/user.service';
     HomePageComponent,
     ProjectsPageComponent,
     CreatePageComponent,
+    MyProjectsPageComponent,
   ],
   imports: [
     CommonModule,

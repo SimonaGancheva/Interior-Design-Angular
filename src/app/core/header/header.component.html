@@ -1,5 +1,5 @@
 <nav>
-  <span class="logo">Arch.stagram</span>
+  <span class="logo"><a  routerLink="/home" routerLinkActive="active">Arch.stagram</a></span>
   <ul>
     <li>
       <a routerLink="/home" routerLinkActive="active">Home</a>
@@ -16,6 +16,9 @@
 
     <li *ngIf="isLoggedIn">
       <a routerLink="/create" routerLinkActive="active">Create Project</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/my-projects" routerLinkActive="active">My Projects</a>
     </li>
     <li *ngIf="isLoggedIn">
       <a (click)="logout()">Logout</a>

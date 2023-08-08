@@ -11,11 +11,15 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent {
   USER_KEY = '[user]';
+  errorMessage: string = '';
 
-  constructor(private userService: UserService, private router: Router, private cookieService: CookieService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private cookieService: CookieService
+  ) {}
 
   login(form: NgForm): void {
-
     if (form.invalid) {
       return;
     }
@@ -24,9 +28,16 @@ export class LoginComponent {
 
     const { email, password } = form.value;
 
-    this.userService.login(email, password).subscribe((res) => {
-      localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email))
-      this.router.navigate(['/']);
-    });
+    this.userService.login(email, password).subscribe(
+      (res) => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email));
+        this.router.navigate(['/']);
+      },
+      (err) => {
+        console.log(err.message);
+        this.errorMessage = 'Email and password do not match!';
+        form.reset()
+      }
+    );
   }
 }

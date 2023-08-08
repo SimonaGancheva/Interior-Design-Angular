@@ -3,13 +3,26 @@
   <form #from="ngForm" (ngSubmit)="login(from)">
     <div class="form-group">
       <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required ngModel/>
+      <input type="email" id="email" name="email" required email #inputEmail="ngModel" ngModel />
     </div>
+
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+      <p class="error" *ngIf="inputEmail.errors?.['email']">Email is not valid!</p>
+    </ng-container>
 
     <div class="form-group">
       <label for="password">Password:</label><br />
-      <input type="password" id="password" name="password" required ngModel/>
+      <input type="password" id="password" name="password" required #inputPassword="ngModel" ngModel />
     </div>
+
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+    </ng-container>
+
+    <ng-container *ngIf="errorMessage">
+      <p class="error">{{errorMessage}}</p>
+    </ng-container>
 
     <button class="submit" type="submit">Login</button>
     <div class="form-group">
