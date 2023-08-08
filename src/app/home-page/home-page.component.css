@@ -1,0 +1,83 @@
+h3, h4 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    background-color: coral;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    
+}
+
+hr {
+    width: 80%;
+}
+
+/* a:hover {
+    background-color: coral;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+} */
+
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Set the gap between cards (optional, adjust as needed) */
+    gap: 20px;
+  }
+
+
+.project-card {
+    max-width: calc(33.33% - 20px); /* 3 cards per row, minus the gap */
+    width: 350px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* Ensure the image is displayed as a square */
+  height: 300px;
+  object-fit: cover;
+
+  }
+  
+  .project-card h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .project-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .project-card button {
+    background-color: grey;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .project-card button:hover {
+    background-color: #555;
+  }

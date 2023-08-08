@@ -1,22 +1,24 @@
 <div id="content">
-    <div id="projects">
-      <h1 *ngIf="project">{{ project.title }}</h1>
-      <div class="project-grid" >
-        <div class="project-details-card" *ngIf="project">
+  <div id="projects">
+    <h1 *ngIf="project">{{ project.title }}</h1>
+    <div class="project-grid">
+      <div class="project-details-card" *ngIf="project">
+        <div class="info-container">
           <img src="{{ project.mainImageUrl }}" alt="Project 1" />
-          <p><b>Architect:</b> {{ project.architect }}</p>
-          <p><b>Client:</b> {{ project.client }}</p>
-          <p><b>Location:</b> {{ project.location }}</p>
-          <p><b>Type:</b> {{ project.type }}</p>
-          <p><b>Style:</b> {{ project.style }}</p>
-          <p><b>Date:</b> {{ project.date }}</p>
-          <p><b>Terms:</b> {{ project.terms }}</p>
-          <p><b>Descpription:</b> {{ project.description }}</p>
-          <img src="{{ project.imageUrl2 }}" alt="Project 1" />
-          <img src="{{ project.imageUrl3 }}" alt="Project 1" />
-          
+          <div class="info-text">
+            <p><b>Architect:</b><br> {{ project.architect }}</p>
+            <p><b>Client:</b><br> {{ project.client }}</p>
+            <p><b>Location:</b><br> {{ project.location }}</p>
+            <p><b>Type:</b><br> {{ project.type }}</p>
+            <p><b>Style:</b><br> {{ project.style }}</p>
+            <p><b>Date:</b><br> {{ project.date }}</p>
+            <p><b>Terms:</b><br> {{ project.terms }}</p>
+          </div>
         </div>
+        <div class="description"><p> {{ project.description }}</p></div>
+        <img class="image-gallery" src="{{ project.imageUrl2 }}" alt="Project 1" />
+        <img class="image-gallery" src="{{ project.imageUrl3 }}" alt="Project 1" />
       </div>
     </div>
   </div>
-  
+</div>
