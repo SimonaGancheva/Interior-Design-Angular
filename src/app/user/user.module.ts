@@ -10,14 +10,24 @@ import { CookieService } from 'ngx-cookie-service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpRequestInterceptor } from '../interceptors/http-request.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, ProfileComponent],
-  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
-  providers: [CookieService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpRequestInterceptor,
-    multi: true,
-  },],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+    DirectivesModule,
+  ],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class UserModule {}

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   USER_KEY = '[user]';
+  errorMessage: string = '';
+
   constructor(private userService: UserService, private router: Router) {}
 
   register(form: NgForm): void {
@@ -24,9 +26,16 @@ export class RegisterComponent {
 
     this.userService
       .register(email, username, password, rePassword)
-      .subscribe((res) => {
-        localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email))
-        this.router.navigate(['/']);
-      });
+      .subscribe(
+        (res) => {
+          localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email));
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          console.log(err.message);
+          // this.errorMessage = 'Email and password do not match!';
+          // form.reset()
+        }
+      );
   }
 }

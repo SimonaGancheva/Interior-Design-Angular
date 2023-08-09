@@ -11,12 +11,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { FormsModule } from '@angular/forms';
-import { UserModule } from './user/user.module';
 import { CookieService } from 'ngx-cookie-service';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { UserService } from './user/user.service';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -35,10 +35,11 @@ import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.com
     ProjectsFeaturesModule,
     HttpClientModule,
     FormsModule,
-    UserModule,
+    UserModule
   ],
   providers: [
-    CookieService, UserService,
+    CookieService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestInterceptor,

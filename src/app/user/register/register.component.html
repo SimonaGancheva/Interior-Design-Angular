@@ -1,25 +1,127 @@
 <div class="form-container">
-    <h1>Register</h1>
-    <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
-      <div class="form-group"><label for="username">Username:</label>
-        <input type="text" id="username" name="username" required ngModel></div>
+  <h1>Register</h1>
+  <form
+    (ngSubmit)="register(registerForm)"
+    #registerForm="ngForm"
+    [appPassword]="['password', 'rePassword']"
+  >
+    <!-- USERNAME -->
 
-      <div class="form-group"><label for="email">Email:</label>
-        <input type="email" id="email" name="email" required email ngModel></div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        minlength="5"
+        #inputUsername="ngModel"
+        ngModel
+      />
+    </div>
 
-      <div class="form-group"><label for="password">Password:</label>
-        <input type="password" id="password" name="password" required ngModel></div>
+    <ng-container *ngIf="inputUsername.touched">
+      <p class="error" *ngIf="inputUsername.errors?.['required']">
+        Username is required!
+      </p>
+      <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+        Username must be at least
+        {{inputUsername.errors?.['minlength']['requiredLength']}} characters!
+      </p>
+    </ng-container>
 
-      <div class="form-group"><label for="rePassword">Confirm Password:</label>
-        <input type="password" id="rePassword" name="rePassword" required ngModel></div>
+    <!-- EMAIL -->
 
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        email
+        #inputEmail="ngModel"
+        ngModel
+      />
+    </div>
+
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="inputEmail.errors?.['email']">
+        Email is not valid!
+      </p>
+    </ng-container>
+
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="5"
+        #password="ngModel"
+        ngModel
         
+      />
+    </div>
 
-      <button class="submit" type="submit">Register</button>
+    <ng-container *ngIf="password.touched">
+      <p class="error" *ngIf="password.errors?.['required']">
+        Password is required!
+      </p>
+      <p class="error" *ngIf="password.errors?.['minlength']">
+        Password must be at least
+        {{password.errors?.['minlength']['requiredLength']}} characters!
+      </p>
+    </ng-container>
 
-      <div class="form-group">
-        <div>Already have an account?</div>
-        <a class="action" routerLink="/login" routerLinkActive="active">Login now!</a>
-      </div>
-    </form>
-  </div>
+    <!-- RE-PASSWORD -->
+
+    <div class="form-group">
+      <label for="rePassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="rePassword"
+        name="rePassword"
+        required
+        #rePassword="ngModel"
+        ngModel
+      />
+    </div>
+
+    <ng-container *ngIf="rePassword.touched">
+      <p class="error" *ngIf="rePassword.errors?.['required']">
+        Confirm Password is required!
+      </p>
+      <p
+        class="error"
+        *ngIf="rePassword.errors?.['matching']"
+      >
+        Passwords do not match!
+      </p>
+    </ng-container>
+
+    <button
+      class="submit"
+      type="submit"
+      [disabled]="registerForm.invalid"
+      [style]="{
+        cursor: registerForm.invalid ? 'not-allowed' : 'pointer'
+      }"
+    >
+      Register
+    </button>
+
+    <div class="form-group">
+      <div>Already have an account?</div>
+      <a class="action" routerLink="/login" routerLinkActive="active"
+        >Login now!</a
+      >
+    </div>
+  </form>
+</div>
