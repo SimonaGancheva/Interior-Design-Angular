@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Project } from '../types/project';
 import { ApiService } from 'src/api.service';
 import { UserService } from '../user/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-my-projects-page',
@@ -10,10 +12,12 @@ import { UserService } from '../user/user.service';
 })
 export class MyProjectsPageComponent {
   projectList: Project[] = [];
+  userId: string = '';
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private cookie: CookieService
   ) {}
 
   get isLogged(): boolean {
@@ -21,15 +25,19 @@ export class MyProjectsPageComponent {
   }
 
   ngOnInit(): void {
+    // this.userId = this.userService.userId || '';
+    // console.log(this.userService.userId);
+
+    console.log(this.cookie.get('userId'));
+    this.userId = this.cookie.get('userId');
+
     this.apiService.getProjects().subscribe({
       next: (projects) => {
         this.projectList = projects;
-        console.log(projects);
       },
       error: (err) => {
         console.error(`Error: ${err}`);
       },
     });
-    this.userService.getProfile().subscribe((res) => console.log(res));
   }
 }

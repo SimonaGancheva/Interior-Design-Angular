@@ -17,6 +17,7 @@ export class ApiService {
     return this.http.get<Project[]>(`${this.appUrl}api/projects${limitFilter}`);
   }
 
+
   getProject(id: string) {
     return this.http.get<Project>(`${this.appUrl}api/projects/${id}`);
   }

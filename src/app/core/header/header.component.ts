@@ -14,6 +14,13 @@ export class HeaderComponent {
 
   constructor(private userService: UserService, private router: Router) {}
 
+
+  // public get userId(): string {
+  //   return this.userService.currId || '';
+  // }
+
+  // userId = this.userService.currId;
+
   public get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }

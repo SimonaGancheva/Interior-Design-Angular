@@ -62,7 +62,7 @@ function editProject(req, res, next) {
     const { _id: userId } = req.user;
     const { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 } = req.body;
 
-    // if the userId is not the same as this one of the post, the post will not be updated
+    // if the userId is not the same as this one of the project, the project will not be updated
     postModel.findOneAndUpdate({ _id: postId, userId }, { title, architect, client, terms, type, style, date, description, location, mainImageUrl, imageUrl2, imageUrl3 }, { new: true })
         .then(updatedPost => {
             if (updatedPost) {

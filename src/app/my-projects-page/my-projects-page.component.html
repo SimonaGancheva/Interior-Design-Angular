@@ -1,14 +1,15 @@
 <div id="content">
-    <div id="projects">
-      <h1>My Projects</h1>
-      <div class="project-grid">
-        <div class="project-card" *ngFor="let project of projectList">
+  <div id="projects">
+    <h1>My Projects</h1>
+    <div class="project-grid">
+      <ng-container *ngFor="let project of projectList">
+        <div class="project-card" *ngIf="project.userId['_id'] == userId">
           <img src="{{ project.mainImageUrl }}" alt="Project 1" />
           <h2>{{ project.title }}</h2>
           <p>Architect: {{ project.architect }}</p>
           <button *ngIf="isLogged" [routerLink]="project._id">Details</button>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
-  
+</div>

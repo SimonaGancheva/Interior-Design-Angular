@@ -15,6 +15,8 @@ export class UserService {
   user: User | undefined;
   appUrl = environment.appUrl;
   USER_KEY = '[user]';
+  // currId = localStorage.getItem(this.USER_KEY);
+  userId: string | undefined;
 
   subscription: Subscription;
 
@@ -66,21 +68,28 @@ export class UserService {
   login(email: string, password: string) {
     return this.http
       .post<User>(`${this.appUrl}api/login`, { email, password })
-      .pipe(tap((user: User | undefined) => this.user$$.next(user)));
+      .pipe(
+        tap((user: User | undefined) => {
+          this.user$$.next(user);
+          this.userId = user?._id;
+          this.cookie.set('userId', `${this.userId}`)
+        })
+      );
   }
 
   logout() {
     // this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
+    this.cookie.delete('userId');
 
     return this.http
       .post<User>(`${this.appUrl}api/logout`, {})
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 
-  getProfile() {
-    return this.http
-      .get<User>('/api/users/profile')
-      .pipe(tap((user) => this.user$$.next(user)));
-  }
+  // getProfile() {
+  //   return this.http
+  //     .get<User>('/api/users/profile')
+  //     .pipe(tap((user) => this.user$$.next(user)));
+  // }
 }

@@ -24,13 +24,14 @@ export class LoginComponent {
       return;
     }
 
-    console.log(form.value);
+    // console.log(form.value);
+    
 
     const { email, password } = form.value;
 
     this.userService.login(email, password).subscribe(
       (res) => {
-        localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email));
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res?._id));
         this.router.navigate(['/']);
       },
       (err) => {
