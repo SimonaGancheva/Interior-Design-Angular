@@ -7,7 +7,7 @@
   >
     <!-- USERNAME -->
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
       <label for="username">Username:</label>
       <input
         type="text"
@@ -20,7 +20,7 @@
         #inputUsername="ngModel"
         ngModel
       />
-    </div>
+    <!-- </div> -->
 
     <ng-container *ngIf="inputUsername.touched">
       <p class="error" *ngIf="inputUsername.errors?.['required']">
@@ -38,7 +38,7 @@
 
     <!-- EMAIL -->
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
       <label for="email">Email:</label>
       <input
         type="email"
@@ -50,7 +50,7 @@
         #inputEmail="ngModel"
         ngModel
       />
-    </div>
+    <!-- </div> -->
 
     <ng-container *ngIf="inputEmail.touched">
       <p class="error" *ngIf="inputEmail.errors?.['required']">
@@ -63,7 +63,7 @@
 
     <!-- PASSWORD -->
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
       <label for="password">Password:</label>
       <input
         type="password"
@@ -76,7 +76,7 @@
         #password="ngModel"
         ngModel
       />
-    </div>
+    <!-- </div> -->
 
     <ng-container *ngIf="password.touched">
       <p class="error" *ngIf="password.errors?.['required']">
@@ -94,7 +94,7 @@
 
     <!-- RE-PASSWORD -->
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
       <label for="rePassword">Confirm Password:</label>
       <input
         type="password"
@@ -106,7 +106,7 @@
         #rePassword="ngModel"
         ngModel
       />
-    </div>
+    <!-- </div> -->
 
     <ng-container *ngIf="rePassword.touched">
       <p class="error" *ngIf="rePassword.errors?.['required']">
