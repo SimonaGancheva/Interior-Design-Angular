@@ -13,6 +13,8 @@
         type="text"
         id="username"
         name="username"
+        pattern="[A-Za-z0-9]+"
+        title="Capital and small latin letters and numbers are allowed"
         required
         minlength="5"
         #inputUsername="ngModel"
@@ -28,6 +30,10 @@
         Username must be at least
         {{inputUsername.errors?.['minlength']['requiredLength']}} characters!
       </p>
+      <p class="error" *ngIf="inputUsername.errors?.['pattern']">
+        Username must contain only capital and small latin letters and numbers
+        0-9!
+      </p>
     </ng-container>
 
     <!-- EMAIL -->
@@ -38,8 +44,9 @@
         type="email"
         id="email"
         name="email"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        title="john_doe@example.com"
         required
-        email
         #inputEmail="ngModel"
         ngModel
       />
@@ -49,7 +56,7 @@
       <p class="error" *ngIf="inputEmail.errors?.['required']">
         Email is required!
       </p>
-      <p class="error" *ngIf="inputEmail.errors?.['email']">
+      <p class="error" *ngIf="inputEmail.errors?.['pattern']">
         Email is not valid!
       </p>
     </ng-container>
@@ -62,11 +69,12 @@
         type="password"
         id="password"
         name="password"
+        pattern="[A-Za-z0-9]+"
+        title="Capital and small latin letters and numbers are allowed"
         required
         minlength="5"
         #password="ngModel"
         ngModel
-        
       />
     </div>
 
@@ -78,6 +86,10 @@
         Password must be at least
         {{password.errors?.['minlength']['requiredLength']}} characters!
       </p>
+      <p class="error" *ngIf="password.errors?.['pattern']">
+        Password must contain only capital and small latin letters and numbers
+        0-9!
+      </p>
     </ng-container>
 
     <!-- RE-PASSWORD -->
@@ -88,6 +100,8 @@
         type="password"
         id="rePassword"
         name="rePassword"
+        pattern="[A-Za-z0-9]+"
+        title="Capital and small latin letters and numbers are allowed"
         required
         #rePassword="ngModel"
         ngModel
@@ -98,12 +112,13 @@
       <p class="error" *ngIf="rePassword.errors?.['required']">
         Confirm Password is required!
       </p>
-      <p
-        class="error"
-        *ngIf="rePassword.errors?.['matching']"
-      >
+      <p class="error" *ngIf="rePassword.errors?.['matching']">
         Passwords do not match!
       </p>
+    </ng-container>
+
+    <ng-container *ngIf="errorMessage">
+      <p class="error">{{ errorMessage }}</p>
     </ng-container>
 
     <button

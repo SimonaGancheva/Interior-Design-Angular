@@ -15,27 +15,26 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   register(form: NgForm): void {
-    
     if (form.invalid) {
       return;
     }
 
-    console.log(form.value);
+    // console.log(form.value);
 
     const { email, username, password, rePassword } = form.value;
 
-    this.userService
-      .register(email, username, password, rePassword)
-      .subscribe(
-        (res) => {
-          localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email));
-          this.router.navigate(['/']);
-        },
-        (err) => {
-          console.log(err.message);
-          // this.errorMessage = 'Email and password do not match!';
-          // form.reset()
-        }
-      );
+    this.userService.register(email, username, password, rePassword).subscribe(
+      (res) => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res?.email));
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        // console.log(error);
+        // console.log(error.error.message);
+
+        this.errorMessage = error.error.message;
+        form.reset();
+      }
+    );
   }
 }
