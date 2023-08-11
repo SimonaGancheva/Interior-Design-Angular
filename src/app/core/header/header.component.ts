@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from 'src/api.service';
+import { Router } from '@angular/router';
 import { Project } from 'src/app/types/project';
 import { UserService } from 'src/app/user/user.service';
 
@@ -13,7 +12,6 @@ export class HeaderComponent {
   projectList: Project[] = [];
 
   constructor(private userService: UserService, private router: Router) {}
-
 
   // public get userId(): string {
   //   return this.userService.currId || '';
