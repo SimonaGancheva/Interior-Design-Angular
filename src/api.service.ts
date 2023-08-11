@@ -32,4 +32,8 @@ export class ApiService {
       }))
       
   }
+
+  deleteProject(id: string) {
+    return this.http.delete<Project>(`${this.appUrl}api/projects/${id}`);
+  }
 }

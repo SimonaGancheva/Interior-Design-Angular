@@ -21,7 +21,7 @@ export class HomePageComponent {
   }
 
   ngOnInit(): void {
-    this.apiService.getProjects(4).subscribe({
+    this.apiService.getProjects(3).subscribe({
       next: (projects) => {
         this.projectList = projects;
       },

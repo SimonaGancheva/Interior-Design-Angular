@@ -38,6 +38,12 @@ nav a:hover {
   background-color: rgb(255, 255, 255);
 }
 
+ .active {
+  color: rgb(156, 76, 47);
+  background-color: rgb(255, 255, 255);
+  
+} 
+
 nav .logo {
   font-size: 24px;
   font-weight: bold;

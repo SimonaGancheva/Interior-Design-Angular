@@ -1,0 +1,24 @@
+<div id="content">
+  <div id="projects">
+    <h1>My Projects</h1>
+    <div class="project-grid">
+      <ng-container *ngFor="let project of projectList">
+        <ng-container *ngIf="project.userId['_id'] == userId"
+          ><div class="project-card">
+            <img src="{{ project.mainImageUrl }}" alt="Project 1" />
+            <h2>{{ project.title }}</h2>
+            <p>Architect: {{ project.architect }}</p>
+            <button [routerLink]="['/projects', project._id]">Details</button>
+            <button
+          class="deleteBtn"
+          *ngIf="isLogged && project.userId._id == userId"
+          (click)="deleteProject(project._id)"
+        >
+          Delete
+        </button>
+          </div></ng-container
+        >
+      </ng-container>
+    </div>
+  </div>
+</div>

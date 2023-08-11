@@ -7,16 +7,18 @@
     <hr />
     <div class="latest-projects"><h3>Explore projects</h3></div>
     <div class="project-grid">
-      <div class="project-card" *ngFor="let project of projectList">
-        <img src="{{ project.mainImageUrl }}" alt="Project 1" />
-        <h2>{{ project.title }}</h2>
-        <p>Architect: {{ project.architect }}</p>
-        <button *ngIf="isLogged" [routerLink]="project._id">Details</button>
-      </div>
+      <ng-container *ngFor="let project of projectList"
+        ><div class="project-card" >
+          <img src="{{ project.mainImageUrl }}" alt="Project 1" />
+          <h2>{{ project.title }}</h2>
+          <p>Architect: {{ project.architect }}</p>
+          <button [routerLink]="['/projects', project._id]">Details</button>
+        </div></ng-container
+      >
     </div>
-    <br>
+    <br />
 
     <div><a routerLink="/projects">See more here!</a></div>
-    <br>
+    <br />
   </div>
 </div>

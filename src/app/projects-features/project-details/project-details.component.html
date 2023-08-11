@@ -6,18 +6,59 @@
         <div class="info-container">
           <img src="{{ project.mainImageUrl }}" alt="Project 1" />
           <div class="info-text">
-            <p><b>Architect:</b><br> {{ project.architect }}</p>
-            <p><b>Client:</b><br> {{ project.client }}</p>
-            <p><b>Location:</b><br> {{ project.location }}</p>
-            <p><b>Type:</b><br> {{ project.type }}</p>
-            <p><b>Style:</b><br> {{ project.style }}</p>
-            <p><b>Date:</b><br> {{ project.date }}</p>
-            <p><b>Terms:</b><br> {{ project.terms }}</p>
+            <p>
+              <b>Architect:</b><br />
+              {{ project.architect }}
+            </p>
+            <p>
+              <b>Client:</b><br />
+              {{ project.client }}
+            </p>
+            <p>
+              <b>Location:</b><br />
+              {{ project.location }}
+            </p>
+            <p>
+              <b>Type:</b><br />
+              {{ project.type }}
+            </p>
+            <p>
+              <b>Style:</b><br />
+              {{ project.style }}
+            </p>
+            <p>
+              <b>Date:</b><br />
+              {{ project.date }}
+            </p>
+            <p>
+              <b>Terms:</b><br />
+              {{ project.terms }}
+            </p>
           </div>
         </div>
-        <div class="description"><p> {{ project.description }}</p></div>
-        <img class="image-gallery" src="{{ project.imageUrl2 }}" alt="Project 1" />
-        <img class="image-gallery" src="{{ project.imageUrl3 }}" alt="Project 1" />
+        <div class="description">
+          <p>{{ project.description }}</p>
+        </div>
+        <ng-container *ngIf="project.imageUrl2"
+          ><img
+            class="image-gallery"
+            src="{{ project.imageUrl2 }}"
+            alt="Project 1"
+        /></ng-container>
+        <ng-container *ngIf="project.imageUrl3"
+          ><img
+            class="image-gallery"
+            src="{{ project.imageUrl3 }}"
+            alt="Project 1"
+        /></ng-container>
+
+        <button
+          class="deleteBtn"
+          *ngIf="isLogged && project.userId._id == userId"
+          (click)="deleteProject(project._id)"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>

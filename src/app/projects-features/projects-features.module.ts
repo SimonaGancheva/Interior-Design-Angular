@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectCardComponent } from './project-card/project-card.component';
+
 import { RouterModule } from '@angular/router';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
-
-
-
+import { ProjectsPageComponent } from './projects-page/projects-page.component';
+import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
 
 @NgModule({
   declarations: [
-    ProjectCardComponent,
     ProjectDetailsComponent,
-  
+    ProjectsPageComponent,
+    MyProjectsPageComponent,
   ],
-  imports: [
-    CommonModule, RouterModule
-  ],
-  exports: [ProjectCardComponent]
+  imports: [CommonModule, RouterModule],
+  exports: [],
 })
-export class ProjectsFeaturesModule { }
+export class ProjectsFeaturesModule {}

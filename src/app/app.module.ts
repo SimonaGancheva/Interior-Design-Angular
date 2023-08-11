@@ -9,33 +9,26 @@ import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ProjectsPageComponent } from './projects-page/projects-page.component';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { CreatePageComponent } from './create-page/create-page.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { UserService } from './user/user.service';
-import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
 import { UserModule } from './user/user.module';
+import { CreatePageComponent } from './projects-features/create-page/create-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    ProjectsPageComponent,
-    CreatePageComponent,
-    MyProjectsPageComponent,
-  ],
+  declarations: [AppComponent, HomePageComponent, CreatePageComponent, NotFoundPageComponent],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     CoreModule,
-    ProjectsFeaturesModule,
     HttpClientModule,
     FormsModule,
-    UserModule
+    UserModule,
+    ProjectsFeaturesModule,
   ],
   providers: [
     CookieService,
