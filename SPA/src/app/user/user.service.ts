@@ -62,7 +62,14 @@ export class UserService {
         password,
         rePassword,
       })
-      .pipe(tap((user: User | undefined) => this.user$$.next(user)));
+      .pipe(
+        tap((user: User | undefined) => {
+          this.user$$.next(user);
+          this.userId = user?._id;
+          this.cookie.set('userId', `${this.userId}`);
+          this.cookie.set('username', `${user?.username}`);
+        })
+      );
   }
 
   login(email: string, password: string) {
@@ -72,8 +79,8 @@ export class UserService {
         tap((user: User | undefined) => {
           this.user$$.next(user);
           this.userId = user?._id;
-          this.cookie.set('userId', `${this.userId}`)
-          this.cookie.set('username', `${user?.username}`)
+          this.cookie.set('userId', `${this.userId}`);
+          this.cookie.set('username', `${user?.username}`);
         })
       );
   }
@@ -82,6 +89,7 @@ export class UserService {
     // this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
     this.cookie.delete('userId');
+    this.cookie.delete('username');
 
     return this.http
       .post<User>(`${this.appUrl}api/logout`, {})
