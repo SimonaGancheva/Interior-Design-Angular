@@ -52,13 +52,14 @@
             alt="Project 1"
         /></ng-container>
 
-        <button
-          class="deleteBtn"
-          *ngIf="isLogged && project.userId._id == userId"
-          (click)="deleteProject(project._id)"
-        >
-          Delete
-        </button>
+        <ng-container *ngIf="isLogged && isAuthor">
+          <button class="deleteBtn" (click)="deleteProject(project._id)">
+            Delete
+          </button>
+          <button class="editBtn" routerLink="/projects/{{project._id}}/edit">
+            Edit
+          </button>
+        </ng-container>
       </div>
     </div>
   </div>

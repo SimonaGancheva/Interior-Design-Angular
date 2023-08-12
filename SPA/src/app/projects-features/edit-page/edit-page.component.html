@@ -1,0 +1,211 @@
+<div class="form-container">
+    <h1>Edit Project</h1>
+    <ng-container *ngIf="project">
+        <form #form="ngForm" (ngSubmit)="editProject(form)">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              [(ngModel)]="project.title"
+              ngModel
+              #title="ngModel"
+            />
+        
+            <ng-container *ngIf="title.touched">
+              <p class="error" *ngIf="title.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="architect">Architect:</label>
+            <input
+              type="text"
+              id="architect"
+              name="architect"
+              required
+              [(ngModel)]="project.architect"
+              ngModel
+              #architect="ngModel"
+            />
+        
+            <ng-container *ngIf="architect.touched">
+              <p class="error" *ngIf="architect.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="client">Client:</label>
+            <input
+              type="text"
+              id="client"
+              name="client"
+              [(ngModel)]="project.client"
+              required
+              ngModel
+              #client="ngModel"
+            />
+        
+            <ng-container *ngIf="client.touched">
+              <p class="error" *ngIf="client.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="terms">Terms:</label>
+            <input
+              type="text"
+              id="terms"
+              name="terms"
+              required
+              [(ngModel)]="project.terms"
+              ngModel
+              #terms="ngModel"
+            />
+        
+            <ng-container *ngIf="terms.touched">
+              <p class="error" *ngIf="terms.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required [(ngModel)]="project.type" ngModel #type="ngModel" />
+        
+            <ng-container *ngIf="type.touched">
+              <p class="error" *ngIf="type.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="style">Style:</label>
+            <input
+              type="text"
+              id="style"
+              name="style"
+              required
+              [(ngModel)]="project.style"
+              ngModel
+              #style="ngModel"
+            />
+        
+            <ng-container *ngIf="style.touched">
+              <p class="error" *ngIf="style.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required [(ngModel)]="project.date" ngModel #date="ngModel" />
+        
+            <ng-container *ngIf="date.touched">
+              <p class="error" *ngIf="date.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="description">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="5"
+              cols="35"
+              required
+              [(ngModel)]="project.description"
+              ngModel
+              #description="ngModel"
+            ></textarea>
+        
+            <ng-container *ngIf="description.touched">
+              <p class="error" *ngIf="description.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="location">Location:</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              required
+              [(ngModel)]="project.location"
+              ngModel
+              #location="ngModel"
+            />
+        
+            <ng-container *ngIf="location.touched">
+              <p class="error" *ngIf="location.errors?.['required']">
+                This field is required!
+              </p>
+            </ng-container>
+        
+            <label for="mainImage">Main Image URL:</label>
+            <input
+              type="text"
+              id="mainImage"
+              name="mainImageUrl"
+              pattern="^http?s:\/\/[-a-zA-Z0-9@:%._\\+~#?&//=]+"
+              required
+              [(ngModel)]="project.mainImageUrl"
+              ngModel
+              #mainImage="ngModel"
+            />
+        
+            <ng-container *ngIf="mainImage.touched">
+              <p class="error" *ngIf="mainImage.errors?.['required']">
+                This field is required!
+              </p>
+              <p class="error" *ngIf="mainImage.errors?.['pattern']">
+                Image URL invalid! URL must start with https:// or http://
+              </p>
+            </ng-container>
+        
+            <label for="secondImage">Second Image URL:</label>
+            <input
+              type="text"
+              id="secondImage"
+              name="imageUrl2"
+              pattern="^http?s:\/\/[-a-zA-Z0-9@:%._\\+~#?&//=]+"
+              [(ngModel)]="project.imageUrl2"
+              ngModel
+              #secondImage="ngModel"
+            />
+        
+            <ng-container *ngIf="secondImage.touched">
+              <p class="error" *ngIf="secondImage.errors?.['pattern']">
+                Image URL invalid! URL must start with https:// or http://
+              </p>
+            </ng-container>
+        
+            <label for="thirdImage">Third Image URL:</label>
+            <input
+              type="text"
+              id="thirdImage"
+              name="imageUrl3"
+              pattern="^http?s:\/\/[-a-zA-Z0-9@:%._\\+~#?&//=]+"
+              [(ngModel)]="project.imageUrl3"
+              ngModel
+              #thirdImage="ngModel"
+            />
+        
+            <ng-container *ngIf="thirdImage.touched">
+              <p class="error" *ngIf="thirdImage.errors?.['pattern']">
+                Image URL invalid! URL must start with https:// or http://
+              </p>
+            </ng-container>
+        
+            <button
+              type="submit"
+              class="submit"
+              [disabled]="form.invalid"
+              [style]="{
+                cursor: form.invalid ? 'not-allowed' : 'pointer'
+              }"
+            >
+              Update Project
+            </button>
+          </form>
+    </ng-container>
+  </div>
+  

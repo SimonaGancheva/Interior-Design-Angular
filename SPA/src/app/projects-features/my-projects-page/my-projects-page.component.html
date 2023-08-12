@@ -10,13 +10,15 @@
             <h2>{{ project.title }}</h2>
             <p>Architect: {{ project.architect }}</p>
             <button [routerLink]="['/projects', project._id]">Details</button>
-            <button
-          class="deleteBtn"
-          *ngIf="isLogged && project.userId._id == userId"
-          (click)="deleteProject(project._id)"
-        >
-          Delete
-        </button>
+            
+        <ng-container *ngIf="isLogged && project.userId._id == userId">
+          <button class="deleteBtn" (click)="deleteProject(project._id)">
+            Delete
+          </button>
+          <button class="editBtn" routerLink="/projects/{{project._id}}/edit">
+            Edit
+          </button>
+        </ng-container>
           </div></ng-container
         >
       </ng-container>

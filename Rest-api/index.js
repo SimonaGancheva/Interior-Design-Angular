@@ -7,7 +7,6 @@ const cors = require('cors');
 // const config = require('./config/config');
 const { errorHandler } = require('./utils');
 
-
 dbConnector()
   .then(() => {
     const config = require('./config/config');
@@ -17,20 +16,25 @@ dbConnector()
 
     app.use(
       cors({
-        origin: config.origin,
+        origin: [config.origin, 'http://localhost:4200', 'https://archstagram.netlify.app/'],
         credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        optionsSuccessStatus: 204,
+        allowedHeaders: ['Content-Type', 'Authorization']
       })
     );
 
+    // app.options('*', cors());
+
     // Additional settings to overcome CORS in production
 
-    app.use(function(req, res, next) {
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Origin');
-      res.setHeader('Access-Control-Allow-Credentials', true);
-      next();
-    });
+    // app.use(function(req, res, next) {
+    //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    //   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    //   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, Accept');
+    //   res.setHeader('Access-Control-Allow-Credentials', true);
+    //   next();
+    // });
 
     app.use('/api', apiRouter);
 

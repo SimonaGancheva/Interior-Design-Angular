@@ -16,7 +16,7 @@ export class CreatePageComponent {
       return;
     }
 
-    console.log(form.value);
+    // console.log(form.value);
 
     const data = form.value;
 

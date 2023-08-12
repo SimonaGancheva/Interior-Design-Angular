@@ -9,6 +9,8 @@ import { ProjectsPageComponent } from './projects-features/projects-page/project
 import { MyProjectsPageComponent } from './projects-features/my-projects-page/my-projects-page.component';
 import { CreatePageComponent } from './projects-features/create-page/create-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { EditPageComponent } from './projects-features/edit-page/edit-page.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -20,6 +22,11 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreatePageComponent,
+    canActivate: [AuthActivate],
+  },
+  {
+    path: 'projects/:projectId/edit',
+    component: EditPageComponent,
     canActivate: [AuthActivate],
   },
   {

@@ -26,6 +26,8 @@ export class MyProjectsPageComponent {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
+  
+
 
   ngOnInit(): void {
     // this.userId = this.userService.userId || '';
@@ -45,6 +47,8 @@ export class MyProjectsPageComponent {
   }
 
   deleteProject(projectId: string): void {
-    this.apiService.deleteProject(projectId).subscribe(() => this.router.navigate(['/projects']))
+    if(confirm('Are you sure you want to delete this project?')) {
+      this.apiService.deleteProject(projectId).subscribe(() => this.router.navigate(['/projects']))
+    }
   }
 }

@@ -80,3 +80,14 @@
  .description {
   padding-bottom: 15px;
  }
+
+
+ .deleteBtn {
+  /* margin-left: 150px; */
+  background-color: darkred !important;
+}
+
+.editBtn {
+  margin-left: 25px;
+  background-color: darkgoldenrod !important;
+}

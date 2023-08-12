@@ -1,39 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/api.service';
 import { Project } from 'src/app/types/project';
-import { UserService } from 'src/app/user/user.service';
 
 @Component({
-  selector: 'app-project-details',
-  templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.css'],
+  selector: 'app-edit-page',
+  templateUrl: './edit-page.component.html',
+  styleUrls: ['./edit-page.component.css'],
 })
-export class ProjectDetailsComponent implements OnInit {
+export class EditPageComponent implements OnInit {
   project: Project | undefined;
-  userId: string = '';
+  // userId: string = '';
   projectId: string = '';
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute,
-    private userService: UserService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private cookie: CookieService
   ) {}
 
-  get isLogged(): boolean {
-    return this.userService.isLogged;
-  }
+  editProject(form: NgForm): void {
+    if (form.invalid) {
+      return;
+    }
 
-  get isAuthor(): boolean {
-    return this.cookie.get('userId') == this.project?.userId._id
+    console.log(form.value);
+
+    const data = form.value;
+
+    if (this.project) {
+      this.apiService.editProject(data, this.project?._id).subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+      this.router.navigate(['/']); // TODO navigate to project's details page
+    }
   }
 
   ngOnInit(): void {
     // if (this.userService.isLogged) {
-      this.fetchProject();
+    this.fetchProject();
     // } else {
     //   this.router.navigate(['/login']);
     // }
@@ -43,18 +52,12 @@ export class ProjectDetailsComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['projectId'];
     // console.log(id);
     // console.log(this.cookie.get('userId'));
-    this.userId = this.cookie.get('userId');
+    // this.userId = this.cookie.get('userId');
 
-    this.apiService.getProject(id).subscribe((project) => {
+    this.apiService.getProject(id).subscribe((project: Project) => {
       this.project = project;
       // this.projectId = project.userId;
       // console.log(project.userId);
     });
-  }
-
-  deleteProject(projectId: string): void {
-    if(confirm('Are you sure you want to delete this project?')) {
-      this.apiService.deleteProject(projectId).subscribe(() => this.router.navigate(['/projects']))
-    }
   }
 }

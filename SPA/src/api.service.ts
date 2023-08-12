@@ -27,11 +27,24 @@ export class ApiService {
       .post<Project>(`${this.appUrl}api/projects`, project)
       .pipe(tap((event) => {
         if(event instanceof HttpResponse) {
+          // console.log(event);
+        }
+      }))
+      
+  }
+
+  editProject(project: Project, id: string) {    
+    return this.http
+      .put<Project>(`${this.appUrl}api/projects/${id}`, project)
+      .pipe(tap((event) => {
+        if(event instanceof HttpResponse) {
           console.log(event);
         }
       }))
       
   }
+
+
 
   deleteProject(id: string) {
     return this.http.delete<Project>(`${this.appUrl}api/projects/${id}`);

@@ -36,8 +36,13 @@
 }
 
 .deleteBtn {
-  margin-left: 220px;
-  background-color: darkred;
+  margin-left: 150px;
+  background-color: darkred !important;
+}
+
+.editBtn {
+  margin-left: 25px;
+  background-color: darkgoldenrod !important;
 }
 
 .project-card button {
