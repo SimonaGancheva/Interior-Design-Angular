@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/api.service';
+import { Project } from 'src/app/types/project';
 
 @Component({
   selector: 'app-create-page',
@@ -20,7 +21,8 @@ export class CreatePageComponent {
 
     const data = form.value;
 
+
     this.apiService.postProject(data).subscribe();
-    this.router.navigate(['/']) // TODO navigate to project's details page
+    this.router.navigate(['/'])
   }
 }

@@ -16,15 +16,27 @@ dbConnector()
 
     app.use(
       cors({
-        origin: [config.origin, 'http://localhost:4200', 'https://archstagram.netlify.app/'],
+        origin: [config.origin,
+          // 'http://localhost:4200', 'https://archstagram.netlify.app/'
+        ],
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        optionsSuccessStatus: 204,
-        allowedHeaders: ['Content-Type', 'Authorization']
+        // optionsSuccessStatus: 204,
+        // allowedHeaders: ['Content-Type', 'Authorization']
       })
     );
 
-    // app.options('*', cors());
+
+
+    // app.use(function(req, res, next) {
+    //   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    //   res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
+    //   if (req.method === 'OPTIONS') {
+    //     res.send(200);
+    //   } else {
+    //     next();
+    //   }
+    // });
 
     // Additional settings to overcome CORS in production
 

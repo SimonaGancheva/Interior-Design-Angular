@@ -50,13 +50,28 @@ const projectSchema = new mongoose.Schema(
     },
     imageUrl2: {
       type: String,
-      required: [true, "Image is required!"],
-      validate: /^https?s:\/\//,
+      // required: [true, "Image is required!"],
+      required: false,
+      validate: [function validator(v) {
+        if (v) {
+          return /^https?s:\/\//.test(v);
+        }
+
+        return true;
+      }]
+      
     },
     imageUrl3: {
       type: String,
-      required: [true, "Image is required!"],
-      validate: /^https?s:\/\//,
+      // required: [true, "Image is required!"],
+      required: false,
+      validate: [function validator(v) {
+        if (v) {
+          return /^https?s:\/\//.test(v);
+        }
+
+        return true;
+      }]
     },
   },
   { timestamps: { createdAt: "created_at" } }

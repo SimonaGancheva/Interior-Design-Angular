@@ -54,7 +54,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   deleteProject(projectId: string): void {
     if(confirm('Are you sure you want to delete this project?')) {
-      this.apiService.deleteProject(projectId).subscribe(() => this.router.navigate(['/projects']))
+      this.apiService.deleteProject(projectId).subscribe();
+      this.router.navigate(['/my-projects'])
     }
   }
 }

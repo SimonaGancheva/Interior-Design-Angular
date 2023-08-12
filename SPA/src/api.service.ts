@@ -27,7 +27,7 @@ export class ApiService {
       .post<Project>(`${this.appUrl}api/projects`, project)
       .pipe(tap((event) => {
         if(event instanceof HttpResponse) {
-          // console.log(event);
+          console.log(event);
         }
       }))
       
@@ -47,6 +47,6 @@ export class ApiService {
 
 
   deleteProject(id: string) {
-    return this.http.delete<Project>(`${this.appUrl}api/projects/${id}`);
+    return this.http.delete(`${this.appUrl}api/projects/${id}`);
   }
 }

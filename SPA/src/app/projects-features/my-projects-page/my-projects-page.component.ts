@@ -33,7 +33,7 @@ export class MyProjectsPageComponent {
     // this.userId = this.userService.userId || '';
     // console.log(this.userService.userId);
 
-    console.log(this.cookie.get('userId'));
+    // console.log(this.cookie.get('userId'));
     this.userId = this.cookie.get('userId');
 
     this.apiService.getProjects().subscribe({
@@ -48,7 +48,15 @@ export class MyProjectsPageComponent {
 
   deleteProject(projectId: string): void {
     if(confirm('Are you sure you want to delete this project?')) {
-      this.apiService.deleteProject(projectId).subscribe(() => this.router.navigate(['/projects']))
+      this.apiService.deleteProject(projectId).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.error(`Error: ${err}`);
+        },
+      });
+      this.router.navigate(['/my-projects'])
     }
   }
 }

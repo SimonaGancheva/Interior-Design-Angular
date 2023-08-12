@@ -1,4 +1,4 @@
-const { projectModel } = require("../models");
+const { projectModel, userModel } = require("../models");
 
 // function getProjects(req, res, next) {
 //     projectModel.find({}).lean()
@@ -62,15 +62,13 @@ function newProject(
     mainImageUrl,
     imageUrl2,
     imageUrl3,
-  });
-  // TODO save if necessary
-  // .save();
-  // .then(post => {
-  //     return Promise.all([
-  //         userModel.updateOne({ _id: userId }, { $push: { posts: post._id }, $addToSet: { themes: themeId } }),
-  //         themeModel.findByIdAndUpdate({ _id: themeId }, { $push: { posts: post._id }, $addToSet: { subscribers: userId } }, { new: true })
-  //     ])
-  // })
+  })
+  // .save()
+  .then(project => {
+      return Promise.all([
+          userModel.updateOne({ _id: userId }, { $push: { projects: project._id }})
+      ])
+  })
 }
 
 function createProject(req, res, next) {
@@ -127,7 +125,7 @@ function editProject(req, res, next) {
   } = req.body;
 
   // if the userId is not the same as this one of the project, the project will not be updated
-  postModel
+  projectModel
     .findOneAndUpdate(
       { _id: postId, userId },
       {
@@ -146,9 +144,9 @@ function editProject(req, res, next) {
       },
       { new: true }
     )
-    .then((updatedPost) => {
-      if (updatedPost) {
-        res.status(200).json(updatedPost);
+    .then((updatedProject) => {
+      if (updatedProject) {
+        res.status(200).json(updatedProject);
       } else {
         res.status(401).json({ message: `Not allowed!` });
       }
@@ -162,7 +160,7 @@ function deleteProject(req, res, next) {
 
   Promise.all([
     projectModel.findOneAndDelete({ _id: projectId, userId }),
-    // userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
+    userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
   ])
     .then(([deletedOne, _, __]) => {
       if (deletedOne) {
