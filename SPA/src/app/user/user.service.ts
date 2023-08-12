@@ -73,6 +73,7 @@ export class UserService {
           this.user$$.next(user);
           this.userId = user?._id;
           this.cookie.set('userId', `${this.userId}`)
+          this.cookie.set('username', `${user?.username}`)
         })
       );
   }
@@ -89,7 +90,7 @@ export class UserService {
 
   // getProfile() {
   //   return this.http
-  //     .get<User>('/api/users/profile')
-  //     .pipe(tap((user) => this.user$$.next(user)));
+  //     .get<User>('/api/users/profile');
+  //     // .pipe(tap((user) => this.user$$.next(user)));
   // }
 }

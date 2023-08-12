@@ -36,7 +36,7 @@ export class EditPageComponent implements OnInit {
         (res) => console.log(res),
         (err) => console.log(err)
       );
-      this.router.navigate(['/']); // TODO navigate to project's details page
+      this.router.navigate([`/projects/${this.project._id}`]);
     }
   }
 

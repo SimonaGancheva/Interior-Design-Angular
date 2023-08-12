@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class MyProjectsPageComponent {
   projectList: Project[] = [];
   userId: string = '';
+  username: string | undefined;
 
   constructor(
     private apiService: ApiService,
@@ -26,8 +27,6 @@ export class MyProjectsPageComponent {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
-  
-
 
   ngOnInit(): void {
     // this.userId = this.userService.userId || '';
@@ -35,19 +34,22 @@ export class MyProjectsPageComponent {
 
     // console.log(this.cookie.get('userId'));
     this.userId = this.cookie.get('userId');
+    
+    this.username = this.cookie.get('username');
 
     this.apiService.getProjects().subscribe({
       next: (projects) => {
         this.projectList = projects;
+        // console.log(this.userService.user);
       },
       error: (err) => {
-        console.error(`Error: ${err}`);
+        console.log(err);
       },
     });
   }
 
   deleteProject(projectId: string): void {
-    if(confirm('Are you sure you want to delete this project?')) {
+    if (confirm('Are you sure you want to delete this project?')) {
       this.apiService.deleteProject(projectId).subscribe({
         next: (res) => {
           console.log(res);
@@ -56,7 +58,7 @@ export class MyProjectsPageComponent {
           console.error(`Error: ${err}`);
         },
       });
-      this.router.navigate(['/my-projects'])
+      this.router.navigate(['/my-projects']);
     }
   }
 }

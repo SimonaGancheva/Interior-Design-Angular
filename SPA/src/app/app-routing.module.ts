@@ -15,7 +15,7 @@ import { EditPageComponent } from './projects-features/edit-page/edit-page.compo
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomePageComponent },
-  { path: 'login', component: LoginComponent }, // TODO route guard for authenticated users
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'projects', component: ProjectsPageComponent },
   { path: 'projects/:projectId', pathMatch: 'full', component: ProjectDetailsComponent },

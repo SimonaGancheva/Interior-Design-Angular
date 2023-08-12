@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Project } from 'src/app/types/project';
 import { UserService } from 'src/app/user/user.service';
@@ -10,18 +10,14 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
   projectList: Project[] = [];
+  username: string | undefined;
 
   constructor(private userService: UserService, private router: Router) {}
 
-  // public get userId(): string {
-  //   return this.userService.currId || '';
-  // }
-
-  // userId = this.userService.currId;
-
-  public get isLoggedIn(): boolean {
+  get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
+
 
   logout(): void {
     this.userService.logout().subscribe(() => this.router.navigate(['/']));
