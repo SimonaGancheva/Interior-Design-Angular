@@ -3,23 +3,23 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
+  constructor(private userService: UserService) {}
 
-  constructor() {}
-
-  intercept(req: HttpRequest<any>, next: HttpHandler):
-  Observable<HttpEvent<any>> {
-  
-    // console.log("interceptor: " + req.url);
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     req = req.clone({
-      withCredentials: true
+      withCredentials: true,
     });
-    
+
     return next.handle(req);
-}
+  }
 }

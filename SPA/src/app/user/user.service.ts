@@ -96,9 +96,7 @@ export class UserService {
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 
-  // getProfile() {
-  //   return this.http
-  //     .get<User>('/api/users/profile');
-  //     // .pipe(tap((user) => this.user$$.next(user)));
-  // }
+ get getToken(): boolean {
+  return !!this.cookie.get('auth-cookie');
+ }
 }

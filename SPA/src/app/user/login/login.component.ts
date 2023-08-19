@@ -32,6 +32,7 @@ export class LoginComponent {
     this.userService.login(email, password).subscribe(
       (res) => {
         localStorage.setItem(this.USER_KEY, JSON.stringify(res?._id));
+        console.log(this.userService.getToken);
         this.router.navigate(['/']);
       },
       (err) => {
